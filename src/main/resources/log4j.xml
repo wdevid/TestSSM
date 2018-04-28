@@ -4,8 +4,9 @@
                      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                      xsi:schemaLocation="http://jakarta.apache.org/log4j/ ">
     <!-- ===================================================================== -->
-    <!--  定义全局输出适配器                                                      -->
+    <!--  定义全局输出适配器                                                       -->
     <!-- ===================================================================== -->
+
     <appender name="consoleAppender" class="org.apache.log4j.ConsoleAppender">
         <layout class="org.apache.log4j.PatternLayout">
             <param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss.SSS}]-[%c]-[%t] %x - %m%n"/>
