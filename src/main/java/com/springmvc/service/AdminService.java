@@ -24,4 +24,7 @@ public class AdminService {
     public int insertAdmin(Admin admin){
         return this.adminMapper.insert(admin);
     }
+
+
+
 }

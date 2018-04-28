@@ -21,6 +21,7 @@ public class main {
         return "hello world";
     }
 
+
     @RequestMapping(value = "/admin",method = RequestMethod.POST)
     @ResponseBody
     public int insertUser(Admin admin){
