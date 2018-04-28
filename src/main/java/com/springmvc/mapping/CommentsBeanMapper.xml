@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.springmvc.dao.CommentsBeanMapper">
+  <resultMap id="BaseResultMap" type="com.springmvc.pojo.CommentsBean">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="pid" jdbcType="VARCHAR" property="pid" />
+    <result column="comments_content" jdbcType="VARCHAR" property="commentsContent" />
+    <result column="thumb" jdbcType="VARCHAR" property="thumb" />
+    <result column="comments_pic" jdbcType="VARCHAR" property="commentsPic" />
+    <result column="delete" jdbcType="VARCHAR" property="delete" />
+    <result column="uid" jdbcType="VARCHAR" property="uid" />
+    <result column="create_time" jdbcType="DATE" property="createTime" />
+    <result column="update_time" jdbcType="DATE" property="updateTime" />
+    <result column="note" jdbcType="VARCHAR" property="note" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, pid, comments_content, thumb, comments_pic, delete, uid, create_time, update_time, 
+    note
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from comments
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from comments
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.springmvc.pojo.CommentsBean">
+    insert into comments (id, pid, comments_content, 
+      thumb, comments_pic, delete, 
+      uid, create_time, update_time, 
+      note)
+    values (#{id,jdbcType=INTEGER}, #{pid,jdbcType=VARCHAR}, #{commentsContent,jdbcType=VARCHAR}, 
+      #{thumb,jdbcType=VARCHAR}, #{commentsPic,jdbcType=VARCHAR}, #{delete,jdbcType=VARCHAR}, 
+      #{uid,jdbcType=VARCHAR}, #{createTime,jdbcType=DATE}, #{updateTime,jdbcType=DATE}, 
+      #{note,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.springmvc.pojo.CommentsBean">
+    insert into comments
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="pid != null">
+        pid,
+      </if>
+      <if test="commentsContent != null">
+        comments_content,
+      </if>
+      <if test="thumb != null">
+        thumb,
+      </if>
+      <if test="commentsPic != null">
+        comments_pic,
+      </if>
+      <if test="delete != null">
+        delete,
+      </if>
+      <if test="uid != null">
+        uid,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="note != null">
+        note,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="pid != null">
+        #{pid,jdbcType=VARCHAR},
+      </if>
+      <if test="commentsContent != null">
+        #{commentsContent,jdbcType=VARCHAR},
+      </if>
+      <if test="thumb != null">
+        #{thumb,jdbcType=VARCHAR},
+      </if>
+      <if test="commentsPic != null">
+        #{commentsPic,jdbcType=VARCHAR},
+      </if>
+      <if test="delete != null">
+        #{delete,jdbcType=VARCHAR},
+      </if>
+      <if test="uid != null">
+        #{uid,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=DATE},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=DATE},
+      </if>
+      <if test="note != null">
+        #{note,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.springmvc.pojo.CommentsBean">
+    update comments
+    <set>
+      <if test="pid != null">
+        pid = #{pid,jdbcType=VARCHAR},
+      </if>
+      <if test="commentsContent != null">
+        comments_content = #{commentsContent,jdbcType=VARCHAR},
+      </if>
+      <if test="thumb != null">
+        thumb = #{thumb,jdbcType=VARCHAR},
+      </if>
+      <if test="commentsPic != null">
+        comments_pic = #{commentsPic,jdbcType=VARCHAR},
+      </if>
+      <if test="delete != null">
+        delete = #{delete,jdbcType=VARCHAR},
+      </if>
+      <if test="uid != null">
+        uid = #{uid,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=DATE},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=DATE},
+      </if>
+      <if test="note != null">
+        note = #{note,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.springmvc.pojo.CommentsBean">
+    update comments
+    set pid = #{pid,jdbcType=VARCHAR},
+      comments_content = #{commentsContent,jdbcType=VARCHAR},
+      thumb = #{thumb,jdbcType=VARCHAR},
+      comments_pic = #{commentsPic,jdbcType=VARCHAR},
+      delete = #{delete,jdbcType=VARCHAR},
+      uid = #{uid,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=DATE},
+      update_time = #{updateTime,jdbcType=DATE},
+      note = #{note,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

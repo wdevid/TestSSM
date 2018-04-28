@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.springmvc.dao.OrderBeanMapper">
+  <resultMap id="BaseResultMap" type="com.springmvc.pojo.OrderBean">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="uid" jdbcType="VARCHAR" property="uid" />
+    <result column="order_number" jdbcType="VARCHAR" property="orderNumber" />
+    <result column="order_status" jdbcType="VARCHAR" property="orderStatus" />
+    <result column="serial_number" jdbcType="VARCHAR" property="serialNumber" />
+    <result column="adress" jdbcType="VARCHAR" property="adress" />
+    <result column="distribution" jdbcType="VARCHAR" property="distribution" />
+    <result column="order_time" jdbcType="DATE" property="orderTime" />
+    <result column="pay_time" jdbcType="DATE" property="payTime" />
+    <result column="consignee" jdbcType="VARCHAR" property="consignee" />
+    <result column="amount_payable" jdbcType="VARCHAR" property="amountPayable" />
+    <result column="amount_realpay" jdbcType="VARCHAR" property="amountRealpay" />
+    <result column="telphone" jdbcType="VARCHAR" property="telphone" />
+    <result column="modify_people" jdbcType="VARCHAR" property="modifyPeople" />
+    <result column="modify_time" jdbcType="DATE" property="modifyTime" />
+    <result column="create_time" jdbcType="DATE" property="createTime" />
+    <result column="update_time" jdbcType="DATE" property="updateTime" />
+    <result column="note" jdbcType="VARCHAR" property="note" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, uid, order_number, order_status, serial_number, adress, distribution, order_time, 
+    pay_time, consignee, amount_payable, amount_realpay, telphone, modify_people, modify_time, 
+    create_time, update_time, note
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from order
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from order
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.springmvc.pojo.OrderBean">
+    insert into order (id, uid, order_number, 
+      order_status, serial_number, adress, 
+      distribution, order_time, pay_time, 
+      consignee, amount_payable, amount_realpay, 
+      telphone, modify_people, modify_time, 
+      create_time, update_time, note
+      )
+    values (#{id,jdbcType=INTEGER}, #{uid,jdbcType=VARCHAR}, #{orderNumber,jdbcType=VARCHAR}, 
+      #{orderStatus,jdbcType=VARCHAR}, #{serialNumber,jdbcType=VARCHAR}, #{adress,jdbcType=VARCHAR}, 
+      #{distribution,jdbcType=VARCHAR}, #{orderTime,jdbcType=DATE}, #{payTime,jdbcType=DATE}, 
+      #{consignee,jdbcType=VARCHAR}, #{amountPayable,jdbcType=VARCHAR}, #{amountRealpay,jdbcType=VARCHAR}, 
+      #{telphone,jdbcType=VARCHAR}, #{modifyPeople,jdbcType=VARCHAR}, #{modifyTime,jdbcType=DATE}, 
+      #{createTime,jdbcType=DATE}, #{updateTime,jdbcType=DATE}, #{note,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.springmvc.pojo.OrderBean">
+    insert into order
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="uid != null">
+        uid,
+      </if>
+      <if test="orderNumber != null">
+        order_number,
+      </if>
+      <if test="orderStatus != null">
+        order_status,
+      </if>
+      <if test="serialNumber != null">
+        serial_number,
+      </if>
+      <if test="adress != null">
+        adress,
+      </if>
+      <if test="distribution != null">
+        distribution,
+      </if>
+      <if test="orderTime != null">
+        order_time,
+      </if>
+      <if test="payTime != null">
+        pay_time,
+      </if>
+      <if test="consignee != null">
+        consignee,
+      </if>
+      <if test="amountPayable != null">
+        amount_payable,
+      </if>
+      <if test="amountRealpay != null">
+        amount_realpay,
+      </if>
+      <if test="telphone != null">
+        telphone,
+      </if>
+      <if test="modifyPeople != null">
+        modify_people,
+      </if>
+      <if test="modifyTime != null">
+        modify_time,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="note != null">
+        note,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="uid != null">
+        #{uid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderNumber != null">
+        #{orderNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="orderStatus != null">
+        #{orderStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="serialNumber != null">
+        #{serialNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="adress != null">
+        #{adress,jdbcType=VARCHAR},
+      </if>
+      <if test="distribution != null">
+        #{distribution,jdbcType=VARCHAR},
+      </if>
+      <if test="orderTime != null">
+        #{orderTime,jdbcType=DATE},
+      </if>
+      <if test="payTime != null">
+        #{payTime,jdbcType=DATE},
+      </if>
+      <if test="consignee != null">
+        #{consignee,jdbcType=VARCHAR},
+      </if>
+      <if test="amountPayable != null">
+        #{amountPayable,jdbcType=VARCHAR},
+      </if>
+      <if test="amountRealpay != null">
+        #{amountRealpay,jdbcType=VARCHAR},
+      </if>
+      <if test="telphone != null">
+        #{telphone,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyPeople != null">
+        #{modifyPeople,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null">
+        #{modifyTime,jdbcType=DATE},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=DATE},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=DATE},
+      </if>
+      <if test="note != null">
+        #{note,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.springmvc.pojo.OrderBean">
+    update order
+    <set>
+      <if test="uid != null">
+        uid = #{uid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderNumber != null">
+        order_number = #{orderNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="orderStatus != null">
+        order_status = #{orderStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="serialNumber != null">
+        serial_number = #{serialNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="adress != null">
+        adress = #{adress,jdbcType=VARCHAR},
+      </if>
+      <if test="distribution != null">
+        distribution = #{distribution,jdbcType=VARCHAR},
+      </if>
+      <if test="orderTime != null">
+        order_time = #{orderTime,jdbcType=DATE},
+      </if>
+      <if test="payTime != null">
+        pay_time = #{payTime,jdbcType=DATE},
+      </if>
+      <if test="consignee != null">
+        consignee = #{consignee,jdbcType=VARCHAR},
+      </if>
+      <if test="amountPayable != null">
+        amount_payable = #{amountPayable,jdbcType=VARCHAR},
+      </if>
+      <if test="amountRealpay != null">
+        amount_realpay = #{amountRealpay,jdbcType=VARCHAR},
+      </if>
+      <if test="telphone != null">
+        telphone = #{telphone,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyPeople != null">
+        modify_people = #{modifyPeople,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null">
+        modify_time = #{modifyTime,jdbcType=DATE},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=DATE},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=DATE},
+      </if>
+      <if test="note != null">
+        note = #{note,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.springmvc.pojo.OrderBean">
+    update order
+    set uid = #{uid,jdbcType=VARCHAR},
+      order_number = #{orderNumber,jdbcType=VARCHAR},
+      order_status = #{orderStatus,jdbcType=VARCHAR},
+      serial_number = #{serialNumber,jdbcType=VARCHAR},
+      adress = #{adress,jdbcType=VARCHAR},
+      distribution = #{distribution,jdbcType=VARCHAR},
+      order_time = #{orderTime,jdbcType=DATE},
+      pay_time = #{payTime,jdbcType=DATE},
+      consignee = #{consignee,jdbcType=VARCHAR},
+      amount_payable = #{amountPayable,jdbcType=VARCHAR},
+      amount_realpay = #{amountRealpay,jdbcType=VARCHAR},
+      telphone = #{telphone,jdbcType=VARCHAR},
+      modify_people = #{modifyPeople,jdbcType=VARCHAR},
+      modify_time = #{modifyTime,jdbcType=DATE},
+      create_time = #{createTime,jdbcType=DATE},
+      update_time = #{updateTime,jdbcType=DATE},
+      note = #{note,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

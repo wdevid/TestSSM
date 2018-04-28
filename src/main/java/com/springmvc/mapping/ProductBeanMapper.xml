@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.springmvc.dao.ProductBeanMapper">
+  <resultMap id="BaseResultMap" type="com.springmvc.pojo.ProductBean">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="pid" jdbcType="VARCHAR" property="pid" />
+    <result column="price" jdbcType="VARCHAR" property="price" />
+    <result column="show_pic" jdbcType="VARCHAR" property="showPic" />
+    <result column="shelves" jdbcType="VARCHAR" property="shelves" />
+    <result column="create_people" jdbcType="VARCHAR" property="createPeople" />
+    <result column="modify_people" jdbcType="VARCHAR" property="modifyPeople" />
+    <result column="create_time" jdbcType="DATE" property="createTime" />
+    <result column="update_time" jdbcType="DATE" property="updateTime" />
+    <result column="note" jdbcType="VARCHAR" property="note" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, pid, price, show_pic, shelves, create_people, modify_people, create_time, update_time, 
+    note
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from product
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from product
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.springmvc.pojo.ProductBean">
+    insert into product (id, pid, price, 
+      show_pic, shelves, create_people, 
+      modify_people, create_time, update_time, 
+      note)
+    values (#{id,jdbcType=INTEGER}, #{pid,jdbcType=VARCHAR}, #{price,jdbcType=VARCHAR}, 
+      #{showPic,jdbcType=VARCHAR}, #{shelves,jdbcType=VARCHAR}, #{createPeople,jdbcType=VARCHAR}, 
+      #{modifyPeople,jdbcType=VARCHAR}, #{createTime,jdbcType=DATE}, #{updateTime,jdbcType=DATE}, 
+      #{note,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.springmvc.pojo.ProductBean">
+    insert into product
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="pid != null">
+        pid,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="showPic != null">
+        show_pic,
+      </if>
+      <if test="shelves != null">
+        shelves,
+      </if>
+      <if test="createPeople != null">
+        create_people,
+      </if>
+      <if test="modifyPeople != null">
+        modify_people,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="note != null">
+        note,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="pid != null">
+        #{pid,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=VARCHAR},
+      </if>
+      <if test="showPic != null">
+        #{showPic,jdbcType=VARCHAR},
+      </if>
+      <if test="shelves != null">
+        #{shelves,jdbcType=VARCHAR},
+      </if>
+      <if test="createPeople != null">
+        #{createPeople,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyPeople != null">
+        #{modifyPeople,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=DATE},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=DATE},
+      </if>
+      <if test="note != null">
+        #{note,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.springmvc.pojo.ProductBean">
+    update product
+    <set>
+      <if test="pid != null">
+        pid = #{pid,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=VARCHAR},
+      </if>
+      <if test="showPic != null">
+        show_pic = #{showPic,jdbcType=VARCHAR},
+      </if>
+      <if test="shelves != null">
+        shelves = #{shelves,jdbcType=VARCHAR},
+      </if>
+      <if test="createPeople != null">
+        create_people = #{createPeople,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyPeople != null">
+        modify_people = #{modifyPeople,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=DATE},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=DATE},
+      </if>
+      <if test="note != null">
+        note = #{note,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.springmvc.pojo.ProductBean">
+    update product
+    set pid = #{pid,jdbcType=VARCHAR},
+      price = #{price,jdbcType=VARCHAR},
+      show_pic = #{showPic,jdbcType=VARCHAR},
+      shelves = #{shelves,jdbcType=VARCHAR},
+      create_people = #{createPeople,jdbcType=VARCHAR},
+      modify_people = #{modifyPeople,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=DATE},
+      update_time = #{updateTime,jdbcType=DATE},
+      note = #{note,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
